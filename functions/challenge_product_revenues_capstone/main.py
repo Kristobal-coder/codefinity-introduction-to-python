@@ -1,24 +1,27 @@
-# Définir la fonction calculate_revenue(prices, quantities_sold)
+# Task 1: Define a function to calculate the revenue for each product
 def calculate_revenue(prices, quantities_sold):
-    revenue = []
-    for price, qty in zip(prices, quantities_sold):
-        revenue.append(price * qty)    
+    # Initialize a list to store the calculated revenues
+    revenue = []    
+    # Iterate through the `prices` and `quantities_sold` lists using indexing
+    for index in range(len(prices)):
+        # Append the revenue (price * quantity) for each product to the revenue list
+        revenue.append(prices[index] * quantities_sold[index])    
+    # Return the list of revenues
     return revenue
-# Définir la fonction formatted_output(products, revenues)
-def formatted_output(products, revenues):
-    revenue_per_product = []
-    # Boucles sur products et revenues
-    for product, revenue in zip(products, revenues):
-        revenue_per_product.append(f"{product} has total revenue of ${revenue}")
-        # Trier la liste `revenue_per_product` par ordre alphabétique des noms de produits
-    for line in sorted(revenue_per_product):
-        print(line)
+# Task 2: Define a function to format and display the sorted revenues
+def formatted_output(revenues):
+    for revenue in sorted(revenues):
+        # Print the formatted output for each product and its corresponding revenue
+        print(f"{revenue[0]} has total revenue of ${revenue[1]}")
+
 # List of products, their prices, and the quantities sold
 products = ["Bread", "Apples", "Oranges", "Bananas"]
 prices = [0.50, 1.20, 2.50, 2.00]  # price per item
 quantities_sold = [150, 200, 100, 50]  # number of items sold
-# Calculer le chifrre d'affaire par produit dans une liste appelée revenue
-revenue = calculate_revenue(prices, quantities_sold)
-# Utiliser la fonction zip  pour combiner les listes products et revenue  en une liste de tupples
-formatted_output(products, revenue)
 
+# Task 3: Call the `calculate_revenue()` function to get total `revenue` for each product
+revenue = calculate_revenue(prices, quantities_sold)
+# Task 4: Use `zip()` to combine the products and their corresponding revenues into a list
+revenue_per_product = list(zip(products, revenue))
+# Task 5: Display the sorted revenues using the `formatted_output()` function
+formatted_output(revenue_per_product)
